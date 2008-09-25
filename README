@@ -1,0 +1,35 @@
+StringTidy
+==========
+
+Wraps Tidy gem into String for easier usage.
+Allows you to clean up portions of html code in strings,
+without any effort.
+
+Defines String#tidy(options={})
+Where options hash consists of options from http://tidy.sourceforge.net/docs/tidy_man.html
+Please note, option names should be converted from using - to _.
+
+Example
+=======
+
+>> "<p>blah".tidy
+=> "<p>blah</p>"
+
+>> "blah".tidy
+=> "blah"
+
+>> "blah<p>".tidy
+=> "blah"
+
+>> "blah".tidy(:show_body_only => false)
+=> "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n    
+   \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n
+   <html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n
+   <meta name=\"generator\" content=\n\"HTML Tidy for Mac OS X 
+   (vers 31 October 2006 - Apple Inc. build 13), see www.w3.org\" />
+   \n<title></title>\n</head>\n<body>\nblah\n</body>\n</html>"
+
+
+Copyright (c) 2008 Dima Sabanin, released under the MIT license.
+Tidy detection code from Bob Aman's FeedTools project used:
+http://sporkmonger.com/projects/feedtools
